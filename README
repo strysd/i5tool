@@ -1,0 +1,12 @@
+There contains tools for PHP on IBMi.
+
+For example, classes for i5 functions. 
+
+Note for me:
+(git-init by git tool)
+(edit files)
+(git schedule to commit by git tool)
+(git commit by git tool)
+cd ~/i5tool
+git remote add origin git@github.com:strysd/i5tool.git
+git push -u origin master
