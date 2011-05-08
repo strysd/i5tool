@@ -71,7 +71,7 @@ class i5Conn{
 			if(!$ret){
 				throw new Exception(i5_errormsg(), i5_errno());
 			}
-			self::$conn = null;
+			unset(self::$conn);
 		}
 	}
 

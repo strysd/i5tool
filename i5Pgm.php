@@ -16,7 +16,7 @@ class i5Pgm extends i5Conn{
 	 * @throws Exception
 	 */
 	function __construct($id, $pgm, $description = array()) {
-		if(!isset(self::$pgmid($id)) || !self::$pgmid($id)){
+		if(!isset(self::$pgmid[$id]) || !is_resource(self::$pgmid[$id])){
 			if(!isset(parent::$conn)){
 				//TODO confirm we can use
 				parent::__construct();
@@ -25,7 +25,7 @@ class i5Pgm extends i5Conn{
 			if(!$ret){
 				throw new Exception(i5_errormsg(), i5_errno());
 			}
-			self::$pgmid($id) = $ret;
+			self::$pgmid[$id] = $ret;
 		}
 	}
 
@@ -43,11 +43,12 @@ class i5Pgm extends i5Conn{
 	 * @throws Exception
 	 */
 	function close($id) {
-		if(isset(self::$pgmid($id)) && is_resource(self::$pgmid($id))){
-			$ret = i5_program_close(self::$pgmid($id));
+		if(isset(self::$pgmid[$id]) && is_resource(self::$pgmid[$id])){
+			$ret = i5_program_close(self::$pgmid[$id]);
 			if(!$ret){
 				throw new Exception(i5_errormsg(), i5_errno());
 			}
+			unset(self::$pgmid[$id]);
 		}
 	}
 
@@ -62,11 +63,11 @@ class i5Pgm extends i5Conn{
 	 * @return array
 	 */
 	function call($id, $in = array(), $out = array(), $inConvert = array(), $outConvert = array()) {
-		if(!isset(self::$pgmid($id)) || !self::$pgmid($id)){
+		if(!isset(self::$pgmid[$id]) || !self::$pgmid[$id]){
 			throw new Exception('This program id is not defined');
 		}
 		$this->inConvert($in, $inConvert);
-		$ret = i5_program_call(self::$pgmid($id), $in, $out);
+		$ret = i5_program_call(self::$pgmid[$id], $in, $out);
 		if(!$ret){
 			throw new Exception(i5_errormsg(), i5_errno());
 		}
