@@ -1,0 +1,48 @@
+--------------------------------
+Readme
+--------------------------------
+These files could be used for Client Access 5250 emulator of IBMi(older name: i5/OS,AS/400)
+
+Locate these files;
+C:\Program Files\IBM\Client Access\Emulator\Private
+
+To use ACTJOB.mac, type Alt + L > A
+To use LNKUSR.mac or LNKWWW.mac,
+type Alt + L > L (> L)
+
+--------------------------------
+ACTJOB.mac
+Display WRKACTJOB with auto updated.
+--------------------------------
+Description =WRKACTJOB
+[wait app]
+[PF9]
+[erase eof]
+"WRKACTJOB SBS(QHTTPSVR ZENDSVR ZMYSQL)
+[enter]
+[PF19]
+--------------------------------
+LNKUSR.mac
+Display /usr/local/zendsvr
+---------------------------------
+Description =WRKLNK
+[wait app]
+[pf9]
+[erase eof]
+"WRKLNK OBJ('/usr/local/zendsvr')
+[enter]
+"5
+[enter]
+--------------------------------
+LNKWWW.mac
+Display /www/zendsvr
+---------------------------------
+Description =WRKLNK www
+[wait app]
+[pf9]
+[erase eof]
+"WRKLNK OBJ('/www/zendsvr')
+[enter]
+"5
+[enter]
+---------end---------------------
