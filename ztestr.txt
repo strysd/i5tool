@@ -1,0 +1,22 @@
+     C           *ENTRY    PLIST
+     C                     PARM           KUJI    6
+     C                     PARM           NOW
+     C*
+     C                     MOVE *BLANK    KUJI
+     C                     TIME           NOW     60
+     C*
+     C           NOW       DIV  4         DUMMY   60
+     C                     MVR            AMARI   10
+     C                     SELEC
+     C           AMARI     WHEQ 1
+     C                     MOVEL'大吉'  KUJI
+     C           AMARI     WHEQ 2
+     C                     MOVEL'中吉'  KUJI
+     C           AMARI     WHEQ 3
+     C                     MOVEL'小吉'  KUJI
+     C                     OTHER
+     C                     MOVEL'再度'  KUJI
+     C                     ENDSL
+     C*
+     C                     SETON                     LR
+     C                     RETRN
