@@ -13,22 +13,18 @@ class i5Conn{
      */
     protected static $options = array(
         //TODO define Your options for i5_connect
-        I5_OPTIONS_CODEPAGEFILE => '/usr/local/zendsvr/etc/jp_1399.cpg'
+        I5_OPTIONS_CODEPAGEFILE => '/usr/local/zendsvr/etc/jp_1399.cpg',
+        I5_OPTIONS_INITLIBL => 'YOURLIB'
     );
 
     /**
-     * basic parameters
+     * connection parameters
      * @var string
      */
     private static $host;
     private static $user;
     private static $pass;
-
-    /**
-     * if persistent connection
-     * @var boolean
-     */
-    protected static $persistent;
+    private static $persist;
 
     /**
      * Open connection
@@ -47,9 +43,9 @@ class i5Conn{
                 self::$host = $config->host;
                 self::$user = $config->user;
                 self::$pass = $config->pass;
-                self::$persistent = $config->persistent;
+                self::$persist = $config->persist;
             }
-            if(self::$persistent){
+            if(self::$persist){
                 $connect = i5_pconnect(self::$host, self::$user,
                                        self::$pass, self::$options);
             } else {
@@ -69,7 +65,7 @@ class i5Conn{
      * @throws Exception
      */
     function __destruct() {
-        if(self::$persistent){
+        if(self::$persist){
             return;
         }
         if(isset(self::$conn) && is_resource(self::$conn)){
@@ -86,7 +82,7 @@ class i5Conn{
         self::$host = null;
         self::$user = null;
         self::$pass = null;
-        self::$persistent = null;
+        self::$persist = null;
     }
 
     /**
@@ -94,7 +90,7 @@ class i5Conn{
      * @throws Exception
      */
     function pclose() {
-        if(!self::$persistent){
+        if(!self::$persist){
             throw new Exception('Can not use this function for non-persistent connection');
         }
         if(isset(self::$conn) && is_resource(self::$conn)){
@@ -113,7 +109,7 @@ class i5Conn{
      * @see i5_get_property()
      */
     function is_newConnection() {
-        if(!self::$persistent){
+        if(!self::$persist){
             throw new Exception('Can not use this function for non-persistent connection');
         }
         return i5_get_property(I5_NEW_CONNECTION, self::$conn);

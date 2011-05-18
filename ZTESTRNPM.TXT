@@ -1,0 +1,5 @@
+     FZLOGF   O   E                    DISK
+     C                     TIME           CTIME
+     C                     WRITEZLOGFR
+     C                     SETON                     LR
+     C                     RETRN

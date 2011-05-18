@@ -6,12 +6,12 @@ $parameters = array(
     array('Name' => 'NOW',  'IO' => I5_OUT, 'Type' => I5_TYPE_INT,),
 );
 try {
-    $pgm = new i5Pgm('ZPHPTEST/ZTESTR', $parameters);
+    $pgm = new i5Pgm('YOURLIB/ZTESTR', $parameters);
     $out = array('KUJI' => 'OMIKUJI',
                  'NOW'  => 'MYNOW');
     $ret = $pgm->call(array(), $out);
+    echo 'KUJI:', $ret['OMIKUJI'], '<BR>';
+    echo 'NOW:',  $ret['MYNOW'];
 } catch (Exception $e) {
-    var_dump($e);
-    exit;
+    echo 'Error:', $e->getMessage();
 }
-var_dump($ret);
