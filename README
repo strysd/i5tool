@@ -1,6 +1,19 @@
 There contains tools for PHP on IBMi.
 
-For example, classes for i5 functions. 
+For example, classes for i5 functions.
+
+List:
+CA_macro.txt  : Macros for IBMi Client Access 5250 Emulator. 
+i5Command.php : Class of i5 function for running CL command.
+i5Conn.php    : Class of i5 function for handling connection .
+i5Pgm.php     : Class of i5 function for calling RPG/CL program.
+setting.ini   : setting of connection. Used with i5Conn.php .
+testcmd.php   : Test program for i5Command.php .
+testpgm.php   : Test program for i5Pgm.php .
+ZLOGF.TXT     : DB2 PF difinition for test program .
+ztestr.txt    : RPGPGM difinition for test program .
+ZTESTRNPM.TXT : RPGPGM difinition for test program .
+
 
 Note for me:
 (git-init by git tool)
