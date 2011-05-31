@@ -58,7 +58,7 @@ class i5Pgm extends i5Conn{
      * @return array
      */
     function call($in = array(), $out = array()) {
-        if(!isset($this->pgm) || !$this->pgm){
+        if(!isset($this->pgm) || !is_resource($this->pgm)){
             throw new Exception('Program is not defined');
         }
         $ret = i5_program_call($this->pgm, $in, $out);
