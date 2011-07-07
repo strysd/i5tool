@@ -1,7 +1,12 @@
 <?php
 include_once './i5Command.php';
 
-$cmd = new i5Command();
+try {
+    $cmd = new i5Command();
+} catch (Exception $e) {
+    echo 'Error:', $e->getMessage();
+    exit;
+}
 
 $in  = array('OBJ' => 'YOURLIB/ZLOGF', 'OBJTYPE' => '*FILE');
 $out = array('TEXT' => 'OBJTEXT');
